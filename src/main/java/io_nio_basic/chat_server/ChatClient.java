@@ -23,6 +23,7 @@ public class ChatClient {
             pw.println(args[0]);
             pw.flush();
 
+            // InputThread 는 다른 클라이언트가 적은 글을 받아서 화면에 출력하는 역할을 한다
             InputThread it = new InputThread(socket, br);
             it.start();
             String line = null;
@@ -43,16 +44,12 @@ public class ChatClient {
             if (br != null) {
                 try {
                     br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                } catch (IOException e) {}
             }
             if (socket != null) {
                 try {
                     socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                } catch (IOException e) {}
             }
         }
     }
